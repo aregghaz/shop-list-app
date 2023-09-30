@@ -23,7 +23,7 @@ export const ImgOrSvg = ({
     const imgWidth = {width: width || divWidth}
     const trueWidth = width ? {width} : {width: '100%'}
     const trueHeight = height ? {height} : {height: undefined}
-    console.log(item,'item')
+    console.log(createPath(type,item),'item')
     return (
         <View>
             {item? (

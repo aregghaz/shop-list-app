@@ -4,7 +4,7 @@ const initialState = {
     category: [],
     subCategory: [],
     products: [],
-    new: [],
+    newProduct: [],
     sale: [],
     best: [],
     saleTeg: [],
@@ -19,10 +19,10 @@ export const homeSlice = createSlice({
     reducers: {
         setData: (state, action) => {
 
-            state.category = action.payload.category,
+                state.category = action.payload.category,
                 state.subCategory = action.payload.subCategory,
                 state.products = action.payload.products,
-                state.new = action.payload.new,
+                state.newProduct = action.payload.new,
                 state.sale = action.payload.sale,
                 state.best = action.payload.best,
                 state.saleTeg = action.payload.saleTeg,
