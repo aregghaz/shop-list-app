@@ -9,22 +9,25 @@ import Companies from "../../components/Companies/Companies";
 import Category from "../../components/Category/Category";
 import Slider from "../../components/slider/Slider";
 import {slider} from "../../data/dataArrays";
-import ProductSlider from "../../components/slider/productSlider";
+import ProductSlider from "../../components/slider/ProductSlider";
 
 export default function HomeScreen(props) {
     const {navigation} = props;
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true)
     const {isLoading, category, companies} = useSelector((state) => state.home)
+
     const getAsyncData = async () => {
         const data = await Home_Api.getHomeData()
         dispatch(setData(data))
     }
+
     useFocusEffect(
         useCallback(() => {
             getAsyncData()
         }, [isLoading])
     )
+
     useLayoutEffect(() => {
         navigation.setOptions({
             headerLeft: () => (

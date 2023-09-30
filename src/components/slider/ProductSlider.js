@@ -3,6 +3,7 @@ import {FlatList, Image, StyleSheet, Text, TouchableHighlight, View} from 'react
 import {createPath} from "../../utils/imagePath";
 import Entypo from "react-native-vector-icons/Entypo";
 import {useSelector} from "react-redux";
+import {RecipeCard} from "../../AppStyles";
 
 const colors = {
     dotColor: '#BFBFBF',
@@ -16,6 +17,7 @@ const ProductSlider = ({navigation}) => {
 
 
     const renderRecipes = ({item}) => {
+        console.log( createPath("products", item.images[0]),'2222')
         return (
             <TouchableHighlight underlayColor="rgba(73,182,77,0.9)" onPress={() => onPressRecipe(item)}>
                 <View style={styles.container}>
@@ -45,20 +47,30 @@ const ProductSlider = ({navigation}) => {
     const {newProduct, products} = useSelector((state) => state.home)
 
 
-    return products.length > 0 && (
+    return newProduct.length > 0 && (
         <View>
             <FlatList
-            horizontal
-            showsVerticalScrollIndicator={false}
-            ///numColumns={2}
-            data={products}
-            renderItem={renderRecipes}
-            keyExtractor={(item) => `${item.id}`}
-        /><
-        /View>
+                horizontal
+                showsVerticalScrollIndicator={false}
+                ///numColumns={2}
+                data={newProduct}
+                renderItem={renderRecipes}
+                keyExtractor={(item) => `${item.id}`}
+            />
+        </View>
     )
 }
 
-const styles = StyleSheet.create({})
 
 export default ProductSlider
+
+
+
+const styles = StyleSheet.create({
+    container: RecipeCard.container,
+    photo: RecipeCard.photo,
+    title: RecipeCard.title,
+    category: RecipeCard.category,
+    icon: RecipeCard.icon,
+    iconView:RecipeCard.iconView
+});
